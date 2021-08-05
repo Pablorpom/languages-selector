@@ -1,9 +1,14 @@
-export default class SelectMenu{
-    constructor(node){
-        this.node = node;
-        this.module();
-    }
-    module(){
-        this.node.innerHTML = `<select name="select" class="select-menu"></select>`;
-    }
+export default class SelectMenu {
+  constructor(node) {
+    this.node = node;
+    this.SelectMenu();
+  }
+
+  SelectMenu() {
+    this.node.innerHTML = `
+    <select name="select" class="select-menu">
+    <option value="off">Off</option>
+    </select>
+    `;
+  }
 }

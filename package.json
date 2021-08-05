@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "npm run lint -- --fix",
     "clean": "rm -rf ./dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "npm run clean",
@@ -15,6 +17,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
     "mini-css-extract-plugin": "^2.2.0",
     "webpack": "^5.48.0",
     "webpack-cli": "^4.7.2",

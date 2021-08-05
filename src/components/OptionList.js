@@ -1,11 +1,13 @@
-export default class OptionList{
-    constructor(list){
-        this.list = list;
-        this.createOptions();
-    }
-    createOptions(){
-        const labelList = this.list.map(language => {
-            return language.label;
-        })
-    }
+export default class OptionList {
+  constructor(node, list) {
+    this.node = node;
+    this.list = list;
+    this.createOptions();
+  }
+
+  createOptions() {
+    this.list.forEach((language) => {
+      this.node.innerHTML += `<option value="${language.id}">${language.label}</option>`;
+    });
+  }
 }

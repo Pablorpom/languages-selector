@@ -1,6 +1,8 @@
-export const video1 = ([
-    {
-      label: 'English',
-      id: 'en'
-    },
-  ]);
+const video3 = ([
+  {
+    label: 'English',
+    id: 'en',
+  },
+]);
+
+export default video3;
