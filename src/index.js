@@ -1,16 +1,16 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 import './styles.css';
 import SelectMenu from './components/SelectMenu';
 import video1 from './data/language-list-1';
-import OptionList from './components/OptionList';
+import ListComparison from './components/ListComparison';
 
-const selectMenu = new SelectMenu(document.querySelector('body'));
-const optionList1 = new OptionList(document.querySelector('.select-menu'), video1);
-const navigatorLanguage = navigator.language.split(('-'))[0];
-const selectedLanguage = document.querySelector('.select-menu');
-const defaultLanguage = optionList1.list.forEach((language) => {
-  if (language.id.toLowerCase() === navigatorLanguage.toLowerCase()) {
-    selectedLanguage.value = language.id;
-  }
-  return selectedLanguage.value;
-});
-console.log(navigatorLanguage);
+const selectMenu = new SelectMenu(document.querySelector('body'), video1);
+const navigatorLanguages = navigator.languages.map((lang) => lang.split('-')[0]);
+const listsComparison = new ListComparison(
+  document.querySelector('.select-menu'),
+  video1,
+  navigatorLanguages,
+);
+const lang = document.querySelector('.select-menu').value;
+console.log(lang);

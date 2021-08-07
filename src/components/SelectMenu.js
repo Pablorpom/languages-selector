@@ -1,14 +1,25 @@
 export default class SelectMenu {
-  constructor(node) {
+  constructor(node, list) {
     this.node = node;
-    this.SelectMenu();
+    this.list = list;
+    this.selectNode = null;
+    this.selectMenu();
+    this.createOptions();
   }
 
-  SelectMenu() {
+  selectMenu() {
     this.node.innerHTML = `
-    <select name="select" class="select-menu">
-    <option value="off">Off</option>
-    </select>
+      <select name="select" class="${SelectMenu.className}">
+        <option value="off">Off</option>
+      </select>
     `;
+    this.selectNode = this.node.querySelector(`.${SelectMenu.className}`);
+  }
+
+  createOptions() {
+    this.list.forEach((language) => {
+      this.selectNode.innerHTML += `<option value="${language.id}">${language.label}</option>`;
+    });
   }
 }
+SelectMenu.className = 'select-menu';
