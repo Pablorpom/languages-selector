@@ -7,11 +7,6 @@ export default class ListComparison {
     this.videoList = videoList.map((language) => language.id);
     this.navigatorList = navigatorList;
     this.comparedLists();
-    this.showSelected();
-  }
-
-  showSelected() {
-    console.log(this.node.value);
   }
 
   comparedLists() {

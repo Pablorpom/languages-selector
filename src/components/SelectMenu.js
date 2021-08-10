@@ -8,7 +8,7 @@ export default class SelectMenu {
   }
 
   selectMenu() {
-    this.node.innerHTML = `
+    this.node.innerHTML += `
       <select name="select" class="${SelectMenu.className}">
         <option value="off">Off</option>
       </select>
