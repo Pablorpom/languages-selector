@@ -5,6 +5,7 @@ export default class SelectMenu {
     this.selectNode = null;
     this.selectMenu();
     this.createOptions();
+    this.selectoption();
   }
 
   selectMenu() {
@@ -20,6 +21,10 @@ export default class SelectMenu {
     this.list.forEach((language) => {
       this.selectNode.innerHTML += `<option value="${language.id}">${language.label}</option>`;
     });
+  }
+
+  selectoption(value) {
+    this.selectNode.value = value;
   }
 }
 SelectMenu.className = 'select-menu';

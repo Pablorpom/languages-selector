@@ -1,7 +1,7 @@
 const video1 = ([
   {
     label: 'English',
-    id: 'et',
+    id: 'en',
   },
   {
     label: 'Español',

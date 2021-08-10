@@ -1,22 +1,25 @@
 /* eslint-disable no-console */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-cond-assign */
 export default class ListComparison {
-  constructor(node, videoList, navigatorList) {
-    this.node = node;
+  constructor(videoList, navigatorList) {
     this.videoList = videoList.map((language) => language.id);
     this.navigatorList = navigatorList;
+    this.findedLanguage = null;
     this.comparedLists();
   }
 
   comparedLists() {
-    this.videoList.forEach((Language, index = 0) => {
-      if (Language === this.navigatorList[index]) {
-        this.node.value = Language;
-      } else if (Language === this.navigatorList[index += 1]) {
-        this.node.value = Language;
-      }
-      index += 1;
+    // eslint-disable-next-line arrow-body-style
+    this.findedLanguage = this.navigatorList.find((language) => {
+      return this.videoList.find((lang) => language === lang);
     });
+    // let findedLanguage;
+    // for (let i = 0; i < this.navigatorList.length; i += 1) {
+    //   for (let x = 0; x < this.videoList.length; x += 1) {
+    //     if (this.videoList[i] === this.navigatorList[x]) {
+    //       findedLanguage = this.videoList[i];
+    //       break;
+    //     }
+    //   }
+    // }
   }
 }
