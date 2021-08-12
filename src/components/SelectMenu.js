@@ -3,12 +3,11 @@ export default class SelectMenu {
     this.node = node;
     this.list = list;
     this.selectNode = null;
-    this.selectMenu();
+    this.buildNode();
     this.createOptions();
-    this.selectoption();
   }
 
-  selectMenu() {
+  buildNode() {
     this.node.innerHTML += `
       <select name="select" class="${SelectMenu.className}">
         <option value="off">Off</option>
