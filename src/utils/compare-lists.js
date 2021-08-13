@@ -1,6 +1,7 @@
+/* eslint-disable import/prefer-default-export */
 /* eslint-disable arrow-body-style */
 
-const compareLists = (list1, list2) => {
+export const compareLists = (list1, list2) => {
   const findResult = list2.find((list2Item) => {
     return list1.find((list1Item) => list2Item === list1Item);
   });
@@ -15,5 +16,3 @@ const compareLists = (list1, list2) => {
   // }
   return findResult;
 };
-
-export default compareLists;

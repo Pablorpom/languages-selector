@@ -7,9 +7,9 @@ import videoLanguagesList1 from './data/language-list-1';
 import SelectMenu from './components/SelectMenu';
 import Persist from './components/PersistSelectedValue';
 
-import compareLists from './utils/compare-lists';
+import { compareLists, getSimpleLanguage, getId } from './utils';
 
-const navigatorLanguages = navigator.languages.map((lang) => lang.split('-')[0]);
+const { languages: navigatorLanguages } = navigator;
 
 const selectMenu = new SelectMenu(
   document.querySelector('body'),
@@ -17,8 +17,8 @@ const selectMenu = new SelectMenu(
 );
 
 const comparisonResults = compareLists(
-  videoLanguagesList1.map(({ id }) => id),
-  navigatorLanguages,
+  videoLanguagesList1.map(getId),
+  navigatorLanguages.map(getSimpleLanguage),
 );
 
 selectMenu.selectoption(comparisonResults);
