@@ -1,3 +1,5 @@
+import { getId } from '../utils';
+
 export default class SelectMenu {
   constructor(node, list, onChange) {
     this.node = node;
@@ -31,7 +33,7 @@ export default class SelectMenu {
   }
 
   selectoption(value) {
-    if (value) {
+    if (this.list.map(getId).includes(value)) {
       this.selectNode.value = value;
     }
   }
