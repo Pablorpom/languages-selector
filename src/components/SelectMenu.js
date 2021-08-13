@@ -1,9 +1,11 @@
 export default class SelectMenu {
-  constructor(node, list) {
+  constructor(node, list, onChange) {
     this.node = node;
     this.list = list;
+    this.onChange = onChange;
     this.selectNode = null;
     this.buildNode();
+    this.attachEventsToNode();
     this.createOptions();
   }
 
@@ -16,6 +18,12 @@ export default class SelectMenu {
     this.selectNode = this.node.querySelector(`.${SelectMenu.className}`);
   }
 
+  attachEventsToNode() {
+    this.selectNode.addEventListener('change', () => {
+      this.onChange(this.selectNode.value);
+    });
+  }
+
   createOptions() {
     this.list.forEach((language) => {
       this.selectNode.innerHTML += `<option value="${language.id}">${language.label}</option>`;
@@ -23,7 +31,9 @@ export default class SelectMenu {
   }
 
   selectoption(value) {
-    this.selectNode.value = value;
+    if (value) {
+      this.selectNode.value = value;
+    }
   }
 }
 SelectMenu.className = 'select-menu';

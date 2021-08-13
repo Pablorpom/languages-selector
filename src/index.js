@@ -2,24 +2,32 @@
 /* eslint-disable no-unused-vars */
 import './styles.css';
 
-import videoLanguagesList1 from './data/language-list-1';
+import videoLanguagesList from './data/language-list-1';
 
 import SelectMenu from './components/SelectMenu';
-import Persist from './components/PersistSelectedValue';
 
-import { compareLists, getSimpleLanguage, getId } from './utils';
+import {
+  Persist, compareLists, getSimpleLanguage, getId,
+} from './utils';
 
 const { languages: navigatorLanguages } = navigator;
+const body = document.querySelector('body');
+
+const selectedLanguagePersist = new Persist('selected-language');
 
 const selectMenu = new SelectMenu(
-  document.querySelector('body'),
-  videoLanguagesList1,
+  body,
+  videoLanguagesList,
+  (value) => {
+    selectedLanguagePersist.persistValue(value);
+  },
 );
 
 const comparisonResults = compareLists(
-  videoLanguagesList1.map(getId),
+  videoLanguagesList.map(getId),
   navigatorLanguages.map(getSimpleLanguage),
 );
 
 selectMenu.selectoption(comparisonResults);
-const saveSelectedLanguage = new Persist(selectMenu.selectNode);
+
+selectMenu.selectoption(selectedLanguagePersist.getPersistedValue());
